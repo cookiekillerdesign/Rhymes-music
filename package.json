@@ -1,0 +1,39 @@
+{
+  "name": "rhymes-music",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "seed": "node scripts/seed.mjs",
+    "lint": "eslint .",
+    "build:artifact": "vite build --mode artifact",
+    "test": "node --test src/admin/fields.test.js src/admin/usage.test.js src/admin/cms/core.test.js src/lib/format.test.js src/lib/fitText.test.js src/lib/markdown.test.js src/admin/metrics.test.js",
+    "prebuild": "node scripts/sitemap.mjs",
+    "seed:sql": "node scripts/seed-sql.mjs",
+    "build:function": "esbuild supabase/functions/sync-catalog/index.ts --bundle --format=esm --platform=neutral --target=es2022 --external:https://* --banner:js=\"// @ts-nocheck\" --outfile=supabase/functions/sync-catalog.bundle.ts && esbuild supabase/functions/backstage/index.ts --bundle --format=esm --platform=neutral --target=es2022 --external:https://* --banner:js=\"// @ts-nocheck\" --outfile=supabase/functions/backstage.bundle.ts",
+    "unused": "npx -y -p typescript@5.6.3 -p knip@5.33.3 knip"
+  },
+  "dependencies": {
+    "@fontsource-variable/onest": "5.3.1",
+    "@supabase/supabase-js": "2.117.3",
+    "gsap": "3.15.0",
+    "lenis": "^1.1.13",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "7.18.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "@vitejs/plugin-react": "4.7.0",
+    "esbuild": "0.25.12",
+    "eslint": "9.39.5",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "globals": "^15.11.0",
+    "vite": "6.4.4",
+    "vite-plugin-singlefile": "2.3.3"
+  }
+}
